@@ -1,221 +1,263 @@
-  <!DOCTYPE html>
-  <html lang="en">
-  <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Trexano Doomsday Bunker</title>
-  <link rel="icon" type="image/x-icon" href="./asset/main/favicon.ico">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Trexano Doomsday Bunker</title>
+<link rel="icon" type="image/x-icon" href="./asset/main/favicon.ico">
 
-  <style>
-    
-  @font-face{
-    font-family:"November";
-    src:url("./asset/font/november.regular.ttf") format("truetype");
-    font-weight:normal;
-    font-style:normal;
-  }
+<style>
+  
+@font-face{
+  font-family:"November";
+  src:url("./asset/font/november.regular.ttf") format("truetype");
+  font-weight:normal;
+  font-style:normal;
+}
 
-  *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-  }
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
 
-  body{
-    background:#f5f5f5;
-    font-family:"November", serif;
-    display:flex;
-    justify-content:center;
-    padding:20px 0 60px;
-  }
+body{
+  background:#f5f5f5;
+  font-family:"November", serif;
+  display:flex;
+  justify-content:center;
+  padding:20px 0 60px;
+}
 
-  /* BIGGER DESKTOP VERSION */
-  /* SAME MOBILE LAYOUT */
-  .page{
-    width:min(94vw, 1200px);
-  }
+/* BIGGER DESKTOP VERSION */
+/* SAME MOBILE LAYOUT */
+.page{
+  width:min(94vw, 1200px);
+}
 
-  .card.filler{
-    background:#000 !important;
-    position:relative;
-    overflow:hidden;
-    width:100%;
-    flex-shrink:0;
-  }
+.card.filler{
+  background:#000 !important;
+  position:relative;
+  overflow:hidden;
+  width:100%;
+  flex-shrink:0;
+}
 
-  .card.filler::before{
-    content:"";
-    position:absolute;
-    inset:-40px;
+.card.filler::before{
+  content:"";
+  position:absolute;
+  inset:-40px;
 
-    background-image:url("./asset/main/filler.svg");
+  background-image:url("./asset/main/filler.svg");
 
-    background-size:21px;
-    background-repeat:repeat;
+  background-size:21px;
+  background-repeat:repeat;
 
-    transform:rotate(18deg) scale(1.2);
-    opacity:1;
+  transform:rotate(18deg) scale(1.2);
+  opacity:1;
 
-    pointer-events:none;
-  }
+  pointer-events:none;
+}
 
-  /* HEADER */
+/* HEADER */
 
-  .top-logo{
-    display:flex;
-    justify-content:center;
-    margin-bottom:16px;
-  }
+.top-logo{
+  display:flex;
+  justify-content:center;
+  margin-bottom:16px;
+}
 
-  .logo{
-    width:21px;
-    height:auto;
-    display:block;
-    object-fit:contain; 
-  }
+.logo{
+  width:21px;
+  height:auto;
+  display:block;
+  object-fit:contain; 
+}
 
-  .menu{
-    display:grid;
-    grid-template-columns:1fr 1fr 1fr;
-    gap:20px;
-    font-size:clamp(12px,1vw,18px);
-    margin-bottom:10px;
-  }
+.menu{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:20px;
+  font-size:clamp(12px,1vw,18px);
+  margin-bottom:10px;
+}
 
-  .menu div:nth-child(2){
-    text-align:center;
-  }
+.menu div:nth-child(2){
+  text-align:center;
+}
 
-  .menu div:nth-child(3){
-    text-align:right;
-  }
+.menu div:nth-child(3){
+  text-align:right;
+}
 
-  .divider{
-    height:1px;
-    background:#000;
-    margin-bottom:20px;
-  }
+.divider{
+  height:1px;
+  background:#000;
+  margin-bottom:20px;
+}
 
-  /* SECTION GRID */
+/* SECTION GRID */
 
-  .grid-section{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:10px;
-    align-items:start;
-    margin-bottom:10px;
-  }
+.grid-section{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  align-items:start;
+  margin-bottom:10px;
+}
 
-  .column{
-    display:flex;
-    flex-direction:column;
-    gap:10px;
-  }
+/* SECTION WRAPPER — clips height for fold animation */
+.section-wrapper{
+  overflow:hidden;
+  transition:height 0.45s cubic-bezier(0.4,0,0.2,1);
+}
 
-  /* FULL WIDTH SECTION DIVIDER */
+.column{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
 
-  /* CARDS */
+/* FULL WIDTH SECTION DIVIDER */
 
-  .card{
-    background:#fff;
-    overflow:hidden;
-  }
+/* CARDS */
 
-  .title-block{
-    background:#000;
-    color:#fff;
-    font-size:clamp(26px,2vw,46px);
-    letter-spacing:2px;
-    text-align:center;
-    padding:14px 0;
-  }
-  .content{
-    padding:10px;
-  }
+.card{
+  background:#fff;
+  overflow:hidden;
+  border: 1px solid #000;
+}
 
-  .title-gap{
-    height:12px;
-    background:#fff;
-  }
+.title-block{
+  background:#000;
+  color:#fff;
+  font-size:clamp(26px,2vw,46px);
+  letter-spacing:2px;
+  text-align:center;
+  padding:14px 0;
+  cursor:pointer;
+  user-select:none;
+  transition:opacity 0.2s;
+}
 
-  .small-title{
-    font-size:clamp(20px,1.4vw,34px);
-    line-height:.95;
-    margin-bottom:10px;
-  }
+.title-block:hover{
+  opacity:0.8;
+}
 
-  .text{
-    font-size:clamp(11px,.8vw,16px);
-    line-height:1.15;
-    margin-bottom:8px;
-  }
+.content{
+  padding:10px;
+}
 
-  .meta{
-    display:flex;
-    justify-content:space-between;
-    font-size:clamp(8px,.6vw,11px);
-    margin-top:8px;
-    opacity:.7;
-  }
+.title-gap{
+  height:12px;
+  background:#fff;
+}
 
-  /* IMAGES */
+.small-title{
+  font-size:clamp(20px,1.4vw,34px);
+  line-height:.95;
+  margin-bottom:10px;
+}
 
-  .card img{
-    width:100%;
-    height:auto;
-    display:block;
-    filter:grayscale(.1) contrast(1.05);
-  }
+.text{
+  font-size:clamp(11px,.8vw,16px);
+  line-height:1.15;
+  margin-bottom:8px;
+}
 
-  /* LIGHTBOX */
+.meta{
+  display:flex;
+  justify-content:space-between;
+  font-size:clamp(8px,.6vw,11px);
+  margin-top:8px;
+  opacity:.7;
+}
 
-  .lightbox{
-    position:fixed;
-    inset:0;
+/* IMAGES */
 
-    background:rgba(0,0,0,.92);
+.card img{
+  width:100%;
+  height:auto;
+  display:block;
+  filter:grayscale(.1) contrast(1.05);
+}
 
-    display:flex;
-    justify-content:center;
-    align-items:center;
+/* LIGHTBOX */
 
-    opacity:0;
-    pointer-events:none;
+.lightbox{
+  position:fixed;
+  inset:0;
 
-    transition:opacity .2s ease;
+  background:rgba(0,0,0,.92);
 
-    z-index:9999;
+  display:flex;
+  justify-content:center;
+  align-items:center;
 
-    padding:20px;
-  }
+  opacity:0;
+  pointer-events:none;
 
-  .lightbox.active{
-    opacity:1;
-    pointer-events:auto;
-  }
+  transition:opacity .2s ease;
 
-  .lightbox img{
-    max-width:95vw;
-    max-height:95vh;
+  z-index:9999;
 
-    object-fit:contain;
+  padding:20px;
+}
 
-    box-shadow:0 0 40px rgba(0,0,0,.5);
-  }
+.lightbox.active{
+  opacity:1;
+  pointer-events:auto;
+}
 
-  .card img{
-    cursor:pointer;
-  }
+.lightbox img{
+  max-width:90vw;
+  max-height:90vh;
+  width:auto;
+  height:auto;
+  object-fit:contain;
+  display:block;
+  margin:auto;
+  box-shadow:0 0 40px rgba(0,0,0,.5);
+}
 
-  /* FOOTER */
+.card img{
+  cursor:pointer;
+}
 
-  .footer{
-    text-align:center;
-    margin-top:24px;
-    font-size:20px;
-  }
+/* COLLAPSED BAR */
 
-  /* FLOATING LOGO */
+.collapsed-bar{
+  display:none;
+  background:#000;
+  color:#fff;
+  font-size:clamp(26px,2vw,46px);
+  letter-spacing:2px;
+  text-align:center;
+  padding:14px 0;
+  margin-bottom:10px;
+  cursor:pointer;
+  user-select:none;
+  border:1px solid #000;
+  transition:opacity 0.2s;
+}
+
+.collapsed-bar:hover{
+  opacity:0.8;
+}
+
+.collapsed-bar.visible{
+  display:block;
+}
+
+/* FOOTER */
+
+.footer{
+  text-align:center;
+  margin-top:24px;
+  font-size:20px;
+}
+
+/* FLOATING LOGO */
 
 .floating-logo{
   position:fixed;
@@ -266,139 +308,148 @@
 @media (max-width:768px){
 
   .small-title{
-    font-size:18px;
+    font-size:12px;
     line-height:1;
+  }
+
+  .text{
+    font-size:8px;
   }
 
 }
 
-  </style>
-  </head>
+</style>
+</head>
 
-  <script>
+<script>
 
-  function balanceSections(){
+function balanceSections(){
 
-    const sections = document.querySelectorAll('.grid-section');
+  const sections = document.querySelectorAll('.grid-section');
 
-    sections.forEach(section => {
+  sections.forEach(section => {
 
-      const columns = section.querySelectorAll('.column');
+    // skip collapsed sections
+    const wrapper = section.closest('.section-wrapper');
+    if(wrapper && wrapper.style.height === '0px') return;
 
-      // remove old fillers first
-      columns.forEach(col => {
-        col.querySelectorAll('.filler').forEach(f => f.remove());
-      });
+    const columns = section.querySelectorAll('.column');
 
-      // calculate tallest column
-      let tallest = 0;
+    // remove old fillers first
+    columns.forEach(col => {
+      col.querySelectorAll('.filler').forEach(f => f.remove());
+    });
 
-      columns.forEach(col => {
-        tallest = Math.max(tallest, col.offsetHeight);
-      });
+    // calculate tallest column
+    let tallest = 0;
 
-      // add fillers
-      columns.forEach(col => {
+    columns.forEach(col => {
+      tallest = Math.max(tallest, col.offsetHeight);
+    });
 
-        const diff = tallest - col.offsetHeight;
+    // add fillers
+    columns.forEach(col => {
 
-        if(diff > 0){
+      const diff = tallest - col.offsetHeight;
 
-          const filler = document.createElement('div');
+      if(diff > 0){
 
-          filler.className = 'card filler';
+        const filler = document.createElement('div');
 
-          filler.style.height = (diff - 10) + 'px';
+        filler.className = 'card filler';
 
-          col.appendChild(filler);
+        filler.style.height = (diff - 10) + 'px';
 
-        }
+        col.appendChild(filler);
 
-      });
+      }
 
     });
 
-  }
+  });
 
-  window.addEventListener('load', balanceSections);
-  window.addEventListener('resize', balanceSections);
+}
+
+window.addEventListener('load', balanceSections);
+window.addEventListener('resize', balanceSections);
+
+</script>
 
 
+<body>
 
-  </script>
+<div class="page">
 
-
-  <body>
-
-  <div class="page">
-
-    <!-- HEADER -->
+  <!-- HEADER -->
 
   <div class="top-logo">
     <img src="./asset/main/Logo.svg" alt="Trexano Logo" class="logo">
   </div>
 
-    <div class="menu">
-      <div>Trexano</div>
-      <div>Brand Design, Typography Poster/Poetry,</div>
-      <div>and everything else</div>
-    </div>
+  <div class="menu">
+    <div>Trexano</div>
+    <div>Brand Design, Typography Poster/Poetry,</div>
+    <div>and everything else</div>
+  </div>
 
-    <!-- ========================= -->
-    <!-- POSTER SECTION -->
-    <!-- ========================= -->
+  <!-- ========================= -->
+  <!-- POSTER SECTION -->
+  <!-- ========================= -->
 
-    <div class="grid-section">
+  <div class="collapsed-bar" data-label="POSTER">POSTER</div>
 
-      <!-- COLUMN 1 -->
-      <div class="column">
+  <div class="section-wrapper">
+  <div class="grid-section">
 
-        <div class="card">
-          <img src="./asset/poster/42 v2.webp">
+    <!-- COLUMN 1 -->
+    <div class="column">
 
-          <div class="content">
-            <div class="small-title">
-              chase youre all else
-            </div>
+      <div class="card">
+        <img src="./asset/poster/oh i want you.webp">
 
-            <div class="text">
-              lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt
-            </div>
+        <div class="content">
+          <div class="small-title">
+            oh i want you but ill never tell you
+          </div>
 
-            <div class="meta">
-              <span>//chaosmetamorph</span>
-              <span>01.05.2026</span>
-            </div>
+          <div class="text">
+            Song : Promise? by Bella Kay
+          </div>
+
+          <div class="meta">
+            <span>//hopelessromantic</span>
+            <span>01.05.2026</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+
+        <div class="content">
+          <div class="small-title">
+            we could have been forever
+          </div>
+
+          <div class="text">
+            lorem ipsum dolor sit amet consectetur adipiscing elit
+          </div>
+
+          <div class="meta">
+            <span>//indojokes</span>
+            <span>01.05.2026</span>
           </div>
         </div>
 
-        <div class="card">
-
-          <div class="content">
-            <div class="small-title">
-              we could have been forever
-            </div>
-
-            <div class="text">
-              lorem ipsum dolor sit amet consectetur adipiscing elit
-            </div>
-
-            <div class="meta">
-              <span>//indojokes</span>
-              <span>01.05.2026</span>
-            </div>
-          </div>
-
-          <img  src="./asset/poster/42 v2.webp">
-
-        </div>
+        <img src="./asset/poster/42 v2.webp">
 
       </div>
 
-      <!-- COLUMN 2 -->
-      <div class="column">
+    </div>
 
-        <div class="card">
+    <!-- COLUMN 2 -->
+    <div class="column">
+
+      <div class="card">
 
         <div class="title-block">
           POSTER
@@ -406,331 +457,394 @@
 
         <div class="title-gap"></div>
 
-          <div class="content">
+        <div class="content">
 
-            <div class="small-title">
-              somewhere between forever and goodbye
-            </div>
-
-            <div class="text">
-              lorem ipsum dolor sit amet consectetur adipiscing elit
-            </div>
-
-            <div class="meta">
-              <span>//humans</span>
-              <span>01.05.2026</span>
-            </div>
-
+          <div class="small-title">
+            somewhere between forever and goodbye
           </div>
 
-          <img  src="./asset/poster/42 v2.webp">
+          <div class="text">
+            lorem ipsum dolor sit amet consectetur adipiscing elit
+          </div>
+
+          <div class="meta">
+            <span>//humans</span>
+            <span>01.05.2026</span>
+          </div>
 
         </div>
 
-        <div class="card">
-
-          <div class="content">
-
-            <div class="small-title">
-              the end of us for good & bad forever
-            </div>
-
-            <div class="text">
-              lorem ipsum dolor sit amet consectetur adipiscing elit
-            </div>
-
-            <div class="meta">
-              <span>//chaostheorysis</span>
-              <span>01.05.2026</span>
-            </div>
-
-          </div>
-
-          <img  src="./asset/poster/42 v2.webp">
-
-        </div>
+        <img src="./asset/poster/42 v2.webp">
 
       </div>
 
-      <!-- COLUMN 3 -->
-      <div class="column">
+      <div class="card">
 
-        <div class="card">
+        <div class="content">
 
-          <div class="content">
-
-            <div class="small-title">
-              you were gone too soon
-            </div>
-
-            <div class="text">
-              lorem ipsum dolor sit amet consectetur adipiscing elit
-            </div>
-
-            <div class="meta">
-              <span>//humans</span>
-            </div>
-
+          <div class="small-title">
+            the end of us for good & bad forever
           </div>
 
-          <img  src="./asset/poster/42 v2.webp">
+          <div class="text">
+            lorem ipsum dolor sit amet consectetur adipiscing elit
+          </div>
+
+          <div class="meta">
+            <span>//chaostheorysis</span>
+            <span>01.05.2026</span>
+          </div>
 
         </div>
 
-        <div class="card">
-
-          <div class="content">
-
-            <div class="small-title">
-              we could have been forever
-            </div>
-
-          </div>
-
-          <img  src="./asset/poster/42 v2.webp">
-
-        </div>
+        <img src="./asset/poster/42 v2.webp">
 
       </div>
 
     </div>
 
-    <!-- PERFECTLY ALIGNED BLACK BAR -->
+    <!-- COLUMN 3 -->
+    <div class="column">
 
-    <!-- ========================= -->
-    <!-- LOGO SECTION -->
-    <!-- ========================= -->
+      <div class="card">
 
-    <div class="grid-section">
+        <div class="content">
 
-      <!-- COLUMN 1 -->
-      <div class="column">
-
-        <div class="card">
-
-          <div class="content">
-            <div class="small-title">
-              All-Star Steals
-            </div>
-
-            <div class="text">
-              lorem ipsum dolor sit amet consectetur adipiscing elit
-            </div>
+          <div class="small-title">
+            you were gone too soon
           </div>
 
-          <img  src="./asset/poster/42 v2.webp">
+          <div class="text">
+            lorem ipsum dolor sit amet consectetur adipiscing elit
+          </div>
+
+          <div class="meta">
+            <span>//humans</span>
+          </div>
 
         </div>
 
-        <div class="card">
-
-          <div class="content">
-            <div class="small-title">
-              DRL
-            </div>
-          </div>
-
-          <img  src="./asset/poster/42 v2.webp">
-
-        </div>
+        <img src="./asset/poster/42 v2.webp">
 
       </div>
 
-      <!-- COLUMN 2 -->
-      <div class="column">
+      <div class="card">
 
-        <div class="card">
+        <div class="content">
 
-          <div class="title-block">
-            LOGO
+          <div class="small-title">
+            we could have been forever
           </div>
-
-          <div class="title-gap"></div>
-
-          <div class="content">
-            <div class="small-title">
-              Bronwyn Nilkins Psychology
-            </div>
-          </div>
-
-          <img  src="./asset/poster/42 v2.webp">
 
         </div>
+
+        <img src="./asset/poster/42 v2.webp">
 
       </div>
 
-      <!-- COLUMN 3 -->
-      <div class="column">
-
-        <div class="card">
-
-          <div class="content">
-            <div class="small-title">
-              Advocare
-            </div>
-          </div>
-
-          <img  src="./asset/poster/42 v2.webp">
-
-        </div>
-
-        <div class="card">
-
-          <div class="content">
-            <div class="small-title">
-              do Pasto ao Prato
-            </div>
-          </div>
-
-          <img  src="./asset/poster/42 v2.webp">
-
-        </div>
-
-      </div>
-
-    </div>
-
-    <!-- PERFECTLY ALIGNED BLACK BAR -->
-
-
-    <!-- ========================= -->
-    <!-- MISC SECTION -->
-    <!-- ========================= -->
-
-    <div class="grid-section">
-
-      <!-- COLUMN 1 -->
-      <div class="column">
-
-        <div class="card">
-
-          <div class="content">
-
-            <div class="small-title">
-              36 Questions for increasing closeness
-            </div>
-
-            <div class="text">
-              long editorial style content block
-            </div>
-
-          </div>
-
-          <img  src="./asset/poster/42 v2.webp">
-
-        </div>
-
-      </div>
-
-      <!-- COLUMN 2 -->
-      <div class="column">
-
-        <div class="card">
-
-          <div class="title-block">
-            MISC
-          </div>
-
-          <div class="title-gap"></div>
-
-          <div class="content">
-
-            <div class="small-title">
-              Tees Design
-            </div>
-
-          </div>
-
-          <img  src="./asset/poster/42 v2.webp">
-
-        </div>
-
-        <div class="card">
-
-          <div class="title-block">
-            MISC
-          </div>
-
-          <div class="content">
-
-            <div class="small-title">
-              Instagram jun.typ
-            </div>
-
-            <div class="text">
-              lorem ipsum dolor sit amet consectetur adipiscing elit
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-      <!-- COLUMN 3 -->
-      <div class="column">
-
-        <div class="card">
-
-          <div class="content">
-
-            <div class="small-title">
-              The Question Game
-            </div>
-
-          </div>
-
-          <img  src="./asset/poster/42 v2.webp">
-
-        </div>
-
-      </div>
-
-    </div>
-
-    <div class="footer">
-      Tirek
     </div>
 
   </div>
-
-  <div class="lightbox" id="lightbox">
-    <img id="lightbox-img" src="">
   </div>
 
+  <!-- ========================= -->
+  <!-- LOGO SECTION -->
+  <!-- ========================= -->
 
-  <script>
+  <div class="collapsed-bar" data-label="LOGO">LOGO</div>
 
-  /* IMAGE LIGHTBOX */
+  <div class="section-wrapper">
+  <div class="grid-section">
 
-  const lightbox = document.getElementById('lightbox');
-  const lightboxImg = document.getElementById('lightbox-img');
+    <!-- COLUMN 1 -->
+    <div class="column">
 
-  document.querySelectorAll('.card img').forEach(img => {
+      <div class="card">
 
-    img.addEventListener('click', () => {
+        <div class="content">
+          <div class="small-title">
+            All-Star Steals
+          </div>
 
-      lightboxImg.src = img.src;
+          <div class="text">
+            lorem ipsum dolor sit amet consectetur adipiscing elit
+          </div>
+        </div>
 
-      lightbox.classList.add('active');
+        <img src="./asset/poster/42 v2.webp">
+
+      </div>
+
+      <div class="card">
+
+        <div class="content">
+          <div class="small-title">
+            DRL
+          </div>
+        </div>
+
+        <img src="./asset/poster/42 v2.webp">
+
+      </div>
+
+    </div>
+
+    <!-- COLUMN 2 -->
+    <div class="column">
+
+      <div class="card">
+
+        <div class="title-block">
+          LOGO
+        </div>
+
+        <div class="title-gap"></div>
+
+        <div class="content">
+          <div class="small-title">
+            Bronwyn Nilkins Psychology
+          </div>
+        </div>
+
+        <img src="./asset/poster/42 v2.webp">
+
+      </div>
+
+    </div>
+
+    <!-- COLUMN 3 -->
+    <div class="column">
+
+      <div class="card">
+
+        <div class="content">
+          <div class="small-title">
+            Advocare
+          </div>
+        </div>
+
+        <img src="./asset/poster/42 v2.webp">
+
+      </div>
+
+      <div class="card">
+
+        <div class="content">
+          <div class="small-title">
+            do Pasto ao Prato
+          </div>
+        </div>
+
+        <img src="./asset/poster/42 v2.webp">
+
+      </div>
+
+    </div>
+
+  </div>
+  </div>
+
+  <!-- ========================= -->
+  <!-- MISC SECTION -->
+  <!-- ========================= -->
+
+  <div class="collapsed-bar" data-label="MISC">MISC</div>
+
+  <div class="section-wrapper">
+  <div class="grid-section">
+
+    <!-- COLUMN 1 -->
+    <div class="column">
+
+      <div class="card">
+
+        <div class="content">
+
+          <div class="small-title">
+            36 Questions for increasing closeness
+          </div>
+
+          <div class="text">
+            long editorial style content block
+          </div>
+
+        </div>
+
+        <img src="./asset/poster/42 v2.webp">
+
+      </div>
+
+    </div>
+
+    <!-- COLUMN 2 -->
+    <div class="column">
+
+      <div class="card">
+
+        <div class="title-block">
+          MISC
+        </div>
+
+        <div class="title-gap"></div>
+
+        <div class="content">
+
+          <div class="small-title">
+            Tees Design
+          </div>
+
+        </div>
+
+        <img src="./asset/poster/42 v2.webp">
+
+      </div>
+
+      <div class="card">
+
+        <div class="title-block">
+          MISC
+        </div>
+
+        <div class="content">
+
+          <div class="small-title">
+            Instagram jun.typ
+          </div>
+
+          <div class="text">
+            lorem ipsum dolor sit amet consectetur adipiscing elit
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- COLUMN 3 -->
+    <div class="column">
+
+      <div class="card">
+
+        <div class="content">
+
+          <div class="small-title">
+            The Question Game
+          </div>
+
+        </div>
+
+        <img src="./asset/poster/42 v2.webp">
+
+      </div>
+
+    </div>
+
+  </div>
+  </div>
+
+  <div class="footer">
+    Tirek
+  </div>
+
+</div>
+
+<div class="lightbox" id="lightbox">
+  <img id="lightbox-img" src="">
+</div>
+
+
+<script>
+
+/* IMAGE LIGHTBOX */
+
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+
+document.querySelectorAll('.card img').forEach(img => {
+
+  img.addEventListener('click', () => {
+
+    lightboxImg.src = img.src;
+
+    lightbox.classList.add('active');
+
+  });
+
+});
+
+lightbox.addEventListener('click', (e) => {
+
+  if(e.target !== lightboxImg){
+
+    lightbox.classList.remove('active');
+
+  }
+
+});
+
+</script>
+
+<script>
+
+/* SECTION COLLAPSE */
+
+function initCollapse(){
+
+  document.querySelectorAll('.title-block').forEach(title => {
+
+    title.addEventListener('click', () => {
+
+      const section   = title.closest('.grid-section');
+      const wrapper   = section.closest('.section-wrapper');
+      const label     = title.textContent.trim();
+      const bar       = wrapper.previousElementSibling; // .collapsed-bar
+
+      // measure full height before collapsing
+      wrapper.style.height = wrapper.scrollHeight + 'px';
+
+      // force reflow then collapse
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          wrapper.style.height = '0px';
+          wrapper.style.marginBottom = '0px';
+          bar.classList.add('visible');
+        });
+      });
 
     });
 
   });
 
-  lightbox.addEventListener('click', (e) => {
+  document.querySelectorAll('.collapsed-bar').forEach(bar => {
 
-    if(e.target !== lightboxImg){
+    bar.addEventListener('click', () => {
 
-      lightbox.classList.remove('active');
+      const wrapper = bar.nextElementSibling; // .section-wrapper
 
-    }
+      bar.classList.remove('visible');
+
+      // expand: set to scrollHeight then clear to let it flow naturally
+      wrapper.style.height = wrapper.scrollHeight + 'px';
+      wrapper.style.marginBottom = '';
+
+      wrapper.addEventListener('transitionend', function handler(){
+        wrapper.style.height = '';
+        wrapper.removeEventListener('transitionend', handler);
+        balanceSections();
+      });
+
+    });
 
   });
 
-  </script>
+}
 
-  <script>
+window.addEventListener('load', initCollapse);
+
+</script>
+
+<script>
 
 /* RANDOM FLOATING LOGO */
 
@@ -820,5 +934,5 @@ topLogo.addEventListener('click', () => {
 
 </script>
 
-  </body>
-  </html>
+</body>
+</html>
